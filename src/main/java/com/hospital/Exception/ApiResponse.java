@@ -1,4 +1,4 @@
-package com.hospital.Exception;
+package com.hospital.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

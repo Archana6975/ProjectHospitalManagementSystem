@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hospital.Exception.ApiResponse;
-import com.hospital.Service.HospitalService;
+import com.hospital.exception.ApiResponse;
 import com.hospital.payload.HospitalDto;
+import com.hospital.service.HospitalService;
 
 @RestController
 @RequestMapping("/api")

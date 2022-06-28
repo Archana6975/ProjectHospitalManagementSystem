@@ -13,8 +13,8 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.core.annotation.Order;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.hospital.Entity.HospitalEntity;
-import com.hospital.Repository.HospitalRepository;
+import com.hospital.entity.HospitalEntity;
+import com.hospital.repository.HospitalRepository;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
@@ -45,9 +45,9 @@ public class HospitalRepositoryTest {
 	@Order(2)
 	public void getHospitalByIdTest() {
 
-		HospitalEntity hospital = hospitalRepository.findById(4).get();
+		HospitalEntity hospital = hospitalRepository.findById(1).get();
 
-		Assertions.assertThat(hospital.getHospitalId()).isEqualTo(4);
+		Assertions.assertThat(hospital.getHospitalId()).isEqualTo(1);
 	}
 
 	@Test
@@ -63,36 +63,40 @@ public class HospitalRepositoryTest {
 	@Order(4)
 	public void updateHospitalTest() {
 
-		HospitalEntity hospital = hospitalRepository.findById(4).get();
+		HospitalEntity hospital = hospitalRepository.findById(1).get();
 
-		hospital.setHospitalName("Unittas");
+		hospital.setHospitalName("JSP");
 
 		HospitalEntity hospital1 = hospitalRepository.save(hospital);
 
-		Assertions.assertThat(hospital1.getHospitalName()).isEqualTo("Unittas");
+		Assertions.assertThat(hospital1.getHospitalName()).isEqualTo("JSP");
 
 	}
 
-	@Test
-	@Order(5)
-
-	public void deleteHospitalTest() {
-
-		HospitalEntity hospital = hospitalRepository.findById(1).get();
-
-		hospitalRepository.delete(hospital);
-
-		HospitalEntity hospital1 = null;
-
-		Optional<HospitalEntity> optionalHospitalEntity = hospitalRepository.findByhospitalName("Villi");
-
-		if (optionalHospitalEntity.isPresent()) {
-			hospital1 = optionalHospitalEntity.get();
-
-		}
-
-		Assertions.assertThat(hospital1 ).isNull();
-
-	}
+	/*
+	 * @Test
+	 * 
+	 * @Order(5)
+	 * 
+	 * public void deleteHospitalTest() {
+	 * 
+	 * HospitalEntity hospital = hospitalRepository.findById(1).get();
+	 * 
+	 * hospitalRepository.delete(hospital);
+	 * 
+	 * HospitalEntity hospital1 = null;
+	 * 
+	 * Optional<HospitalEntity> optionalHospitalEntity =
+	 * hospitalRepository.findByhospitalName("kauvery");
+	 * 
+	 * if (optionalHospitalEntity.isPresent()) { hospital1 =
+	 * optionalHospitalEntity.get();
+	 * 
+	 * }
+	 * 
+	 * Assertions.assertThat(hospital1 ).isNull();
+	 * 
+	 * }
+	 */
 
 }

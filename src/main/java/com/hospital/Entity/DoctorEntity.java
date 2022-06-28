@@ -1,4 +1,4 @@
-package com.hospital.Entity;
+package com.hospital.entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,17 +34,23 @@ import lombok.ToString;
 public class DoctorEntity {
 
 	@Id
-	@SequenceGenerator(name="doctor",initialValue=201,sequenceName = "doctor")
+	//@SequenceGenerator(name="doctor",initialValue=201,sequenceName = "doctor")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 
 	private int doctorId;
 
+	@NotEmpty
+	@Size(min = 4, max = 20, message = "doctor name can not be empty, contains minimum 4 character and maximum 20")
 	@Column(nullable = false)
 	private String doctorName;
 
+	@NotEmpty
+	@Size(min = 4, max = 20, message = "designation can not be empty, contains minimum 4 character and maximum 20")
 	@Column(nullable = false)
 	private String designation;
 
+	@NotEmpty
+	@Size(min = 4, max = 20, message = "doctor salary can not be empty")
 	@Column(nullable = false)
 	private String doctorSalary;
 

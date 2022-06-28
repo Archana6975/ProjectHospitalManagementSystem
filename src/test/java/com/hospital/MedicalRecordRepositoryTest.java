@@ -13,10 +13,10 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.core.annotation.Order;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.hospital.Entity.MedicalRecordEntity;
-import com.hospital.Entity.PatientEntity;
-import com.hospital.Repository.MedicalRecordRepository;
-import com.hospital.Repository.PatientRepository;
+import com.hospital.entity.MedicalRecordEntity;
+import com.hospital.entity.PatientEntity;
+import com.hospital.repository.MedicalRecordRepository;
+import com.hospital.repository.PatientRepository;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
@@ -93,7 +93,7 @@ public class MedicalRecordRepositoryTest {
 		MedicalRecordEntity medicalRecord1 = null;
 
 		Optional<MedicalRecordEntity> optionalMedicalRecord = medicalRecordRepository
-				.findByDateOfAdmission("25/06/2021");
+				.findByDateOfAdmission(" 23/02/2020");
 
 		if (optionalMedicalRecord.isPresent()) {
 
@@ -109,7 +109,7 @@ public class MedicalRecordRepositoryTest {
 	@Order(6)
 	public void getMedicalRecordByPatient() {
 
-		PatientEntity patientEntity = patientRepository.findById(3).get();
+		PatientEntity patientEntity = patientRepository.findById(1).get();
 
 		List<MedicalRecordEntity> medicalRecordList = medicalRecordRepository.findByPatient(patientEntity);
 

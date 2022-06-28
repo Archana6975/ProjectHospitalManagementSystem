@@ -2,7 +2,7 @@ package com.hospital.payload;
 
 import java.util.List;
 
-import com.hospital.Entity.HospitalEntity;
+import com.hospital.entity.HospitalEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,12 +1,12 @@
-package com.hospital.Repository;
+package com.hospital.repository;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.hospital.Entity.DoctorEntity;
-import com.hospital.Entity.PatientEntity;
+import com.hospital.entity.DoctorEntity;
+import com.hospital.entity.PatientEntity;
 
 public interface PatientRepository extends JpaRepository<PatientEntity, Integer> {
 

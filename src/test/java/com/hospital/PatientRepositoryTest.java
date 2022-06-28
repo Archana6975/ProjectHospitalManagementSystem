@@ -13,10 +13,10 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.core.annotation.Order;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.hospital.Entity.DoctorEntity;
-import com.hospital.Entity.PatientEntity;
-import com.hospital.Repository.DoctorRepository;
-import com.hospital.Repository.PatientRepository;
+import com.hospital.entity.DoctorEntity;
+import com.hospital.entity.PatientEntity;
+import com.hospital.repository.DoctorRepository;
+import com.hospital.repository.PatientRepository;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
@@ -51,8 +51,8 @@ public class PatientRepositoryTest {
 	@Order(2)
 
 	public void getPatientById() {
-		PatientEntity patientEntity = patientRepository.findById(3).get();
-		Assertions.assertThat(patientEntity.getPatientId()).isEqualTo(3);
+		PatientEntity patientEntity = patientRepository.findById(1).get();
+		Assertions.assertThat(patientEntity.getPatientId()).isEqualTo(1);
 
 	}
 
@@ -68,7 +68,7 @@ public class PatientRepositoryTest {
 	@Test
 	@Order(4)
 	public void updatePatientById() {
-		PatientEntity patientEntity = patientRepository.findById(3).get();
+		PatientEntity patientEntity = patientRepository.findById(1).get();
 
 		patientEntity.setPatientName("Peter");
 
@@ -78,32 +78,34 @@ public class PatientRepositoryTest {
 
 	}
 
-	@Test
-	@Order(5)
-	public void deletePatientTest() {
-		PatientEntity patientEntity = patientRepository.findById(3).get();
-
-		patientRepository.delete(patientEntity);
-
-		PatientEntity patientEntity1 = null;
-
-		Optional<PatientEntity> optionalPatient = patientRepository.findByPatientName("Peter");
-
-		if (optionalPatient.isPresent()) {
-
-			patientEntity1 = optionalPatient.get();
-
-		}
-
-		Assertions.assertThat(patientEntity1).isNull();
-
-	}
-
+	/*
+	 * @Test
+	 * 
+	 * @Order(5) public void deletePatientTest() { PatientEntity patientEntity =
+	 * patientRepository.findById(1).get();
+	 * 
+	 * patientRepository.delete(patientEntity);
+	 * 
+	 * PatientEntity patientEntity1 = null;
+	 * 
+	 * Optional<PatientEntity> optionalPatientEntity =
+	 * patientRepository.findByPatientName("Swathi");
+	 * 
+	 * if (optionalPatientEntity.isPresent()) {
+	 * 
+	 * patientEntity1 = optionalPatientEntity.get();
+	 * 
+	 * }
+	 * 
+	 * Assertions.assertThat(patientEntity1).isNull();
+	 * 
+	 * }
+	 */
 	@Test
 	@Order(6)
 	public void getPatientByDoctor() {
 
-		DoctorEntity doctorEntity = doctorRepository.findById(2).get();
+		DoctorEntity doctorEntity = doctorRepository.findById(1).get();
 
 		List<PatientEntity> patientList = patientRepository.findByDoctor(doctorEntity);
 

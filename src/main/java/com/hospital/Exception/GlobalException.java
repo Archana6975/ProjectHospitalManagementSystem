@@ -1,4 +1,4 @@
-package com.hospital.Exception;
+package com.hospital.exception;
 
 import java.util.HashSet;
 import java.util.Set;

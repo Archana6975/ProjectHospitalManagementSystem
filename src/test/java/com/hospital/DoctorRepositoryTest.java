@@ -1,6 +1,6 @@
 package com.hospital;
 
-import static org.assertj.core.api.Assertions.assertThatIllegalStateException;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -15,10 +15,10 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.core.annotation.Order;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.hospital.Entity.DoctorEntity;
-import com.hospital.Entity.HospitalEntity;
-import com.hospital.Repository.DoctorRepository;
-import com.hospital.Repository.HospitalRepository;
+import com.hospital.entity.DoctorEntity;
+import com.hospital.entity.HospitalEntity;
+import com.hospital.repository.DoctorRepository;
+import com.hospital.repository.HospitalRepository;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
@@ -51,9 +51,9 @@ public class DoctorRepositoryTest {
 	@Test
 	@Order(2)
 	public void getDoctorByIdTest() {
-		DoctorEntity doctorEntity = doctorRepository.findById(2).get();
+		DoctorEntity doctorEntity = doctorRepository.findById(1).get();
 
-		Assertions.assertThat(doctorEntity.getDoctorId()).isEqualTo(2);
+		Assertions.assertThat(doctorEntity.getDoctorId()).isEqualTo(1);
 
 	}
 
@@ -71,7 +71,7 @@ public class DoctorRepositoryTest {
 	@Order(4)
 	public void updateDoctorTest() {
 
-		DoctorEntity doctorEntity = doctorRepository.findById(2).get();
+		DoctorEntity doctorEntity = doctorRepository.findById(1).get();
 
 		doctorEntity.setDesignation("Neurologist");
 		DoctorEntity doctorEntity1 = doctorRepository.save(doctorEntity);
@@ -79,26 +79,30 @@ public class DoctorRepositoryTest {
 		Assertions.assertThat(doctorEntity1.getDesignation()).isEqualTo("Neurologist");
 	}
 
-	@Test
-	@Order(5)
-	public void deleteDoctorTest() {
-
-		DoctorEntity doctorEntity = doctorRepository.findById(2).get();
-		doctorRepository.delete(doctorEntity);
-
-		DoctorEntity doctorEntity1 = null;
-
-		Optional<DoctorEntity> optionalDoctor = doctorRepository.findByDoctorName("Grey");
-
-		if (optionalDoctor.isPresent()) {
-
-			doctorEntity1 = optionalDoctor.get();
-
-		}
-
-		Assertions.assertThat(doctorEntity1).isNull();
-
-	}
+	/*
+	 * @Test
+	 * 
+	 * @Order(5) public void deleteDoctorTest() {
+	 * 
+	 * DoctorEntity doctorEntity = doctorRepository.findById(1).get();
+	 * 
+	 * doctorRepository.delete(doctorEntity);
+	 * 
+	 * DoctorEntity doctorEntity1 = null;
+	 * 
+	 * Optional<DoctorEntity> optionalDoctorEntity =
+	 * doctorRepository.findBydoctorName("Archana");
+	 * 
+	 * if (optionalDoctorEntity.isPresent()) {
+	 * 
+	 * doctorEntity1 = optionalDoctorEntity.get();
+	 * 
+	 * }
+	 * 
+	 * Assertions.assertThat(doctorEntity1).isNull();
+	 * 
+	 * }
+	 */
 
 	@Test
 	@Order(6)

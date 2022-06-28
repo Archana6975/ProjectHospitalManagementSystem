@@ -1,4 +1,4 @@
-package com.hospital.ServiceImplementation;
+package com.hospital.serviceimplementation;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -6,11 +6,12 @@ import org.modelmapper.ModelMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.hospital.Entity.HospitalEntity;
-import com.hospital.Exception.ResourceNotFoundException;
-import com.hospital.Repository.HospitalRepository;
-import com.hospital.Service.HospitalService;
+
+import com.hospital.entity.HospitalEntity;
+import com.hospital.exception.ResourceNotFoundException;
 import com.hospital.payload.HospitalDto;
+import com.hospital.repository.HospitalRepository;
+import com.hospital.service.HospitalService;
 
 @Service
 public class HospitalServiceImplementation implements HospitalService {

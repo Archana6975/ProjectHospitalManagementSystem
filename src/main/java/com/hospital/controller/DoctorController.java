@@ -2,6 +2,8 @@ package com.hospital.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,9 +16,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hospital.Exception.ApiResponse;
-import com.hospital.Service.DoctorService;
+import com.hospital.exception.ApiResponse;
 import com.hospital.payload.DoctorDto;
+import com.hospital.service.DoctorService;
 
 @RestController
 @RequestMapping("/api")
@@ -25,9 +27,9 @@ public class DoctorController {
 	@Autowired
 	private DoctorService doctorService;
 
-	// to create doctor
+	// To create doctor
 	@PostMapping("/hospital/{hospitalId}/doctor")
-	public ResponseEntity<DoctorDto> createDoctor(@PathVariable int hospitalId, @RequestBody DoctorDto doctorDto) {
+	public ResponseEntity<DoctorDto> createDoctor(@Valid @PathVariable int hospitalId, @RequestBody DoctorDto doctorDto) {
 
 		DoctorDto createdDoctor = this.doctorService.createDoctor(doctorDto, hospitalId);
 
